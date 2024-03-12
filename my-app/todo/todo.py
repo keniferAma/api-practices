@@ -18,7 +18,8 @@ async def append(request: Request, todo: Todo = Depends(Todo.as_form)) -> Todo:
     todo_list.append(todo)
     return templates.TemplateResponse('todo.html', {'request': request, 
                                                     'todos': todo_list})
-
+    #The entire HTML page is generated and sent as the response, even if only a small part of the page is changing.
+    #So, this 'TemplateResponse' has the magic of render the html page.
 
 @router.get('/todo') 
 async def retrieve(request: Request) -> Todo:
